@@ -3,5 +3,5 @@ Module {
 	description: 'Raylib wrapper'
 	version: '2024.11.1'
 	license: 'MIT'
-	dependencies: []
+	dependencies: ['https://github.com/duarteroso/raylib']
 }
