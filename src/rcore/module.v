@@ -24,7 +24,7 @@ pub fn is_window_ready() bool {
 
 // Check if window is currently fullscreen
 pub fn is_window_fullscreen() bool {
-	return C.IsWindowFullScreen()
+	return C.IsWindowFullscreen()
 }
 
 // Check if window is currently hidden (only PLATFORM_DESKTOP)
@@ -33,7 +33,7 @@ pub fn is_window_hidden() bool {
 }
 
 // Check if window is currently minimized (only PLATFORM_DESKTOP)
-pub fn IsWindowMinimized() bool {
+pub fn is_window_minimized() bool {
 	return C.IsWindowMinimized()
 }
 
@@ -49,7 +49,7 @@ pub fn is_window_focused() bool {
 
 // Check if window has been resized last frame
 pub fn is_window_resized() bool {
-	return C.IsWidowResized()
+	return C.IsWindowResized()
 }
 
 // Check if one specific window flag is enabled
@@ -59,7 +59,7 @@ pub fn is_window_state(flag raylib.ConfigFlag) bool {
 
 // Set window configuration state using flags (only PLATFORM_DESKTOP)
 pub fn set_window_state(flags raylib.ConfigFlag) {
-	C.SetWidowState(u32(flags))
+	C.SetWindowState(u32(flags))
 }
 
 // Clear window configuration state flags
@@ -98,19 +98,31 @@ pub fn set_window_icon(image raylib.Image) {
 }
 
 // Set icon for window (multiple images, RGBA 32bit, only PLATFORM_DESKTOP)
-pub fn SetWindowIcons(images &Image, count int)
+pub fn set_window_icons(images &raylib.Image, count int) {
+	C.SetWindowIcons(images, count)
+}
 
 // Set title for window (only PLATFORM_DESKTOP and PLATFORM_WEB)
-pub fn SetWindowTitle(const_title &char)
+pub fn set_window_title(title string) {
+	C.SetWindowTitle(&char(title.str))
+}
 
 // Set window position on screen (only PLATFORM_DESKTOP)
-pub fn SetWindowPosition(x int, y int)
+pub fn set_window_position(x int, y int) {
+	C.SetWindowPosition(x, y)
+}
 
 // Set monitor for the current window
-pub fn SetWindowMonitor(monitor int)
+pub fn set_window_monitor(monitor int) {
+	C.SetWindowMonitor(monitor)
+}
 
 // Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)
-pub fn SetWindowMinSize(width int, height int)
+pub fn set_window_min_size(width int, height int) {
+	C.SetWindowMinSize(width, height)
+}
+
+/*
 
 // Set window maximum dimensions (for FLAG_WINDOW_RESIZABLE)
 pub fn SetWindowMaxSize(width int, height int)
@@ -696,3 +708,5 @@ pub fn UpdateCamera(camera &Camera, mode int)
 
 // Update camera movement/rotation
 pub fn UpdateCameraPro(camera &Camera, movement Vector3, rotation Vector3, zoom f32)
+
+*/
